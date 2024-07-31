@@ -90,20 +90,41 @@ td:last-child, tr:last-child{
     font-weight: bold;
 }
 
+.btnMaisResultados{
+    background: rgb(33, 155, 255);
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 10px 30px;
+    margin-top: 20px;
+    align-self: flex-end;
+}
+
 @media screen and (max-width: 600px){
-    table{
-        border: none;
+    thead{
+        display: none;
     }
 
-    thead{
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        position: absolute;
-        border: none;
-        clip: rect(0 0 0 0);
-        overflow: hidden;
-        padding: 0;
+    td{
+        display: block;
+        text-align: right;
+        border-bottom: 1px solid rgba(221, 221, 221, 0.17);
+        color: rgb(167, 167, 167);
+    }
+
+    td::before{
+        content: attr(data-label);
+        float: left;
+        color: rgb(197, 197, 197);
+        font-weight: bold;
+    }
+
+    tr:first-child, td:first-child{
+        border-radius: 0;
+    }
+    
+    td:last-child, tr:last-child{
+        border-radius: 0;
     }
 
 }
