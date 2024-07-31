@@ -35,7 +35,7 @@ export default function Home() {
                 </thead>
 
                 <tbody>
-                    <tr>
+                    <tr className={s.tr}>
                         <td data-label='Moeda'>
                             <div className="name">
                                 <Link to='/detalhes/bitcoin'><span>Bitcoin</span> | BTC</Link>
@@ -54,7 +54,7 @@ export default function Home() {
                             Volume
                         </td>
                         
-                        <td data-label='Mudança 24h'>
+                        <td className={s.verde} data-label='Mudança 24h'>
                             Mudança 24h
                         </td>
                     </tr>

@@ -1,8 +1,9 @@
 .container{
-    width: 100%;
+    width: min(700px, 90%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
 }
 .logo{
     margin-bottom: 60px;
@@ -13,10 +14,11 @@ img{
 }
 
 form{
-    width: min(700px, 90%);
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 60px;
 }
 
 input{
@@ -41,3 +43,69 @@ button{
 button:hover{
     color: white;
 }
+
+table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 14px;
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+}
+
+th{
+    color: white;
+    text-align: center;
+}
+
+tr, td{
+    padding: 5px;  
+}
+
+.tr{
+    background: rgb(41, 41, 41);
+    color: white;
+}
+
+tr, td{
+    text-align: center;
+    padding: 10px;
+}
+
+tr:first-child, td:first-child{
+    border-radius: 4px  0 0 4px;
+}
+
+td:last-child, tr:last-child{
+    border-radius: 0 4px 4px 0;
+}
+
+.verm{
+    color: rgb(216, 36, 36);
+    font-weight: bold;
+}
+
+.verde{
+    color: rgb(42, 247, 103);
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px){
+    table{
+        border: none;
+    }
+
+    thead{
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        position: absolute;
+        border: none;
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        padding: 0;
+    }
+
+}
+
+
