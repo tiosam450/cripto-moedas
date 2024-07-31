@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+button{
+    cursor: pointer;
+    outline: none;
+}
+
+body{
+    padding: 60px 0;
+    background: #151618;
+}
+
+a{
+    text-decoration: none;
+}
