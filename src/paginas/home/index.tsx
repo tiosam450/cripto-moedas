@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { FormEvent } from "react";
 import s from './home.module.css'
 
-interface Props {
+export interface Props {
     changePercent24Hr: string;
     explorer: string;
     id: string;
@@ -94,7 +94,7 @@ export default function Home() {
                         <td>
                             <div className={s.nome}>
                                 <img className={s.iconeCoin} src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`} alt="" />
-                                <Link to={`/detalhes/${item.name}`}><span>{item.name} | {item.symbol}</span></Link>
+                                <Link to={`/detalhes/${item.name.toLocaleLowerCase()}`}><span>{item.name} | {item.symbol}</span></Link>
                             </div>
                         </td>
 
