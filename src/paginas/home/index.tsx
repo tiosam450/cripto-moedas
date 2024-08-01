@@ -31,13 +31,14 @@ export default function Home() {
     const [input, setInput] = useState<string | number>()
     const navigate = useNavigate()
     const [coins, setCoins] = useState<Props[]>([])
+    const [mais, setMais] = useState(0)
 
     useEffect(() => {
         getData()
-    }, [])
+    }, [mais])
 
     async function getData() {
-       await fetch("https://api.coincap.io/v2/assets?limit=10&offset=0").then(resposta => resposta.json()).then((data:DataProps) => {
+       await fetch(`https://api.coincap.io/v2/assets?limit=10&offset=${mais}`).then(resposta => resposta.json()).then((data:DataProps) => {
             const dataCoin = data.data
 
             const formataPreco = Intl.NumberFormat('en-US',{style:'currency', currency:'USD'})
@@ -52,13 +53,18 @@ export default function Home() {
                 }
                 return formato
             })
-            setCoins(moedaFormatada)
+            const listaCoins = [...coins, ...moedaFormatada]
+            setCoins(listaCoins)
         })
     }
 
     function pesquisar(e: FormEvent) {
         e.preventDefault()
         navigate(`/detalhes/${input}`)
+    }
+
+    function maisResultados(){
+        setMais(mais + 10)
     }
 
     return (
@@ -111,7 +117,7 @@ export default function Home() {
                     ))}
                 </tbody>
             </table>
-            <button className={s.btnMaisResultados}>Mais resultados</button>
+            <button className={s.btnMaisResultados} onClick={maisResultados}>Mais resultados</button>
 
         </section>
 
