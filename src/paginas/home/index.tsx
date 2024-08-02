@@ -28,7 +28,7 @@ interface DataProps{
 }
 
 export default function Home() {
-    const [input, setInput] = useState<string | number>()
+    const [input, setInput] = useState<string>()
     const navigate = useNavigate()
     const [coins, setCoins] = useState<Props[]>([])
     const [mais, setMais] = useState(0)
@@ -60,7 +60,7 @@ export default function Home() {
 
     function pesquisar(e: FormEvent) {
         e.preventDefault()
-        navigate(`/detalhes/${input}`)
+        navigate(`/detalhes/${input?.toLowerCase()}`)
     }
 
     function maisResultados(){

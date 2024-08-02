@@ -1,33 +1,66 @@
-import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Props } from "../home";
 
-interface PropsData{
+interface PropsData {
     data: Props
 }
 
-export default function Detalhes(){
-    const {cripto} = useParams()
+interface ErrorProps {
+    error: string
+}
 
-    useEffect(()=>{
+type DataProps = PropsData | ErrorProps
 
-        try{
-            fetch(`https://api.coincap.io/v2/assets/${cripto}`).then((response)=>response.json()).then((data: PropsData)=>{
+
+
+export default function Detalhes() {
+    const { cripto } = useParams()
+    const navigate = useNavigate()
+    const [conta, setConta] = useState<Props>()
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+
+        try {
+            fetch(`https://api.coincap.io/v2/assets/${cripto}`).then((response) => response.json()).then((data: DataProps) => {
+                if ("error" in data) {
+                    navigate('/')
+                    return
+                }
                 const dados = data.data
-                console.log(dados)
 
+                const formataPreco = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 
+                const formataPrecoCompacto = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', notation: 'compact' })
+
+                const formato = {
+                    ...dados,
+                    precoFormatado: formataPreco.format(Number(dados.priceUsd)),
+                    valorMercado: formataPrecoCompacto.format(Number(dados.marketCapUsd)),
+                    volumeFormatado: formataPrecoCompacto.format(Number(dados.volumeUsd24Hr)),
+                }
+
+                setConta(formato)
+                setLoading(false)
             })
-        }catch(erro){
+
+        } catch (erro) {
             console.log(erro)
         }
 
-    },[])
+    }, [])
 
-    return(
+    if (loading) {
+        return (
+            <h2>Carregando...</h2>
+        )
+    }
+
+    return (
         <>
-        <h1>Página de Detalhes</h1>
-        <Link to='/'>Voltar</Link>
+            <h1>Página de Detalhes</h1>
+            <Link to='/'>Voltar</Link>
         </>
     )
 }
