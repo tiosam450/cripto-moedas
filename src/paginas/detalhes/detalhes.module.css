@@ -1,0 +1,57 @@
+.container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dados{
+    width: min(400px, 90%);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: rgb(41, 41, 41);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.726);
+}
+
+.info{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.img{
+    width: 50px;
+}
+
+.btnMaisResultados{
+    background: rgb(33, 155, 255);
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 10px 30px;
+    margin-top: 20px;
+    align-self: flex-end;
+    border-radius: 6px;
+    transition:  .2s all;
+    
+}
+
+.btnMaisResultados:hover{
+    background: rgb(76, 174, 255);
+}
+
+.verm{
+    color: rgb(216, 36, 36);
+    font-weight: bold;
+}
+
+.verde{
+    color: rgb(42, 247, 103);
+    font-weight: bold;
+}

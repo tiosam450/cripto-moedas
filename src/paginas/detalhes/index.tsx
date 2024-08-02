@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Props } from "../home";
+import style from './detalhes.module.css'
 
 interface PropsData {
     data: Props
@@ -58,9 +59,18 @@ export default function Detalhes() {
     }
 
     return (
-        <>
-            <h1>Página de Detalhes</h1>
-            <Link to='/'>Voltar</Link>
+        <>  
+            <div className={style.container}>
+                <div className={style.dados}>
+                    <div className={style.info}><img className={style.img} src={`https://assets.coincap.io/assets/icons/${conta?.symbol.toLowerCase()}@2x.png`} alt="" />
+                    <h1>{conta?.name}</h1></div>
+                    <div className={style.info}><span>Valor de Mercado: </span><h3>{conta?.valorMercado}</h3></div>
+                    <div className={style.info}><span>Preço: </span><h3>{conta?.precoFormatado}</h3></div>
+                    <div className={style.info}><span>Volume: </span><h3>{conta?.volumeFormatado}</h3></div>
+                    <div className={style.info}><span>Mudança 24h: </span><h3 className={ (Number(conta?.changePercent24Hr)) > 0 ? style.verde : style.verm }>{Number(conta?.changePercent24Hr).toFixed(2)}</h3></div>
+                    <Link to='/' className={style.btnMaisResultados}>Voltar</Link>
+                </div>
+            </div>
         </>
     )
 }

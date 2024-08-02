@@ -70,8 +70,6 @@ export default function Home() {
     return (
         <section className={s.container}>
 
-            <Link to='/' className={s.logo}><img src={logo} alt="Logo" /></Link>
-
             <form className={s.form} onSubmit={pesquisar}>
                 <input type="text" value={input} onChange={e => setInput(e.target.value)} />
                 <button><IoSearch /></button>
