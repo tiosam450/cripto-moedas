@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/img/logo.webp";
 import { IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { FormEvent } from "react";
